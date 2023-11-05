@@ -1,10 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import Container from "./Container/Container";
 import userLogo from "../../src/assets/user.png"
+import useAuth from "../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 
 
 const NavBar = () => {
+    const { logOutUser, user } = useAuth()
 
     const navLink = <>
         <NavLink to="/" className={({ isActive, isPending }) =>
@@ -26,6 +29,18 @@ const NavBar = () => {
 
     </>
 
+    const handleLogOut = () => {
+        logOutUser()
+            .then(() => {
+                toast('Logged Out successfully')
+            })
+            .catch(error => {
+                console.log(error)
+                toast(error.message)
+            })
+
+    }
+
     return (
         <div className="bg-gray-200">
             <Container>
@@ -38,8 +53,23 @@ const NavBar = () => {
                             </label>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                 {
+                                    <img className="w-10 rounded-full" src={user?.photoURL ? user.photoURL : userLogo} />
+                                }
+                                {
+                                    <a className="justify-between text-xl font-bold mb-2">
+                                        {
+                                            user?.displayName ? user.displayName : "username"
+                                        }
+                                    </a>
+                                }
+                                {
                                     navLink
                                 }
+                                {
+                                    <button onClick={handleLogOut} className="btn btn-sm text-white bg-[#2eca7f] mb-2 hover:bg-[#6610f2]">Logout</button>
+                                }
+
+
                             </ul>
                         </div>
 
@@ -52,28 +82,33 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end hidden lg:flex">
-                        <Link
-                            to='/login'>
-                            <button
-                                className="btn text-white rounded-full px-6 bg-[#2eca7f] hover:bg-[#6610f2] duration-500"
-                            >Login</button>
-                        </Link>
-                        <div className="dropdown dropdown-left dropdown-bottom">
-                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                <div className="w-10 rounded-full">
-                                    <img src={userLogo} />
+                        {
+                            user?.email ?
+                                <div className="dropdown dropdown-left dropdown-bottom">
+                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                        <div className="w-20 rounded-full">
+                                            <img src={user?.photoURL ? user.photoURL : userLogo} />
+                                        </div>
+                                    </label>
+                                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                        <li>
+                                            <a className="justify-between text-xl font-bold mb-2">
+                                                {
+                                                    user?.displayName ? user.displayName : "username"
+                                                }
+                                            </a>
+                                        </li>
+                                        <button onClick={handleLogOut} className="btn btn-sm text-white bg-[#2eca7f] mb-2 hover:bg-[#6610f2]">Logout</button>
+                                    </ul>
                                 </div>
-                            </label>
-                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                                <li>
-                                    <a className="justify-between">
-                                        Profile
-                                    </a>
-                                </li>
-                                <li><a>Settings</a></li>
-                                <li><a>Logout</a></li>
-                            </ul>
-                        </div>
+                                :
+                                <Link
+                                    to='/login'>
+                                    <button
+                                        className="btn text-white rounded-full px-6 bg-[#2eca7f] hover:bg-[#6610f2] duration-500"
+                                    >Login</button>
+                                </Link>
+                        }
                     </div>
                 </div>
             </Container>

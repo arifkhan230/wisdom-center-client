@@ -1,12 +1,13 @@
-import Title from "../../components/Title/Title";
+import Banner from "./Banner/Banner";
+import BookCategory from "./BookCategory/BookCategory";
+
 
 
 const Home = () => {
     return (
         <div>
-            <Title>
-                <h2>Hello from Home</h2>
-            </Title>
+            <Banner></Banner>
+            <BookCategory></BookCategory>
         </div>
     );
 };
