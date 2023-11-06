@@ -1,53 +1,59 @@
+import { useLoaderData } from "react-router-dom";
+import Title from "../Title/Title";
+import Container from "../Container/Container";
 import { useState } from "react";
-import Container from "../../components/Container/Container";
-import Title from "../../components/Title/Title";
 import useAxios from "../../Hooks/useAxios";
 import toast from "react-hot-toast";
 
 
-const AddBook = () => {
-    const axios = useAxios();
+const UpdateBook = () => {
+    const axios = useAxios()
+    const book = useLoaderData();
 
-    const [category, setCategory] = useState("");
-    const [name, setName] = useState('');
-    const [author, setAuthor] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [rating, setRating] = useState(1);
-    const [image, setPhoto] = useState('');
-    const [description, setDescription] = useState('');
+    const { _id, category, image, name, author, quantity, rating, description } = book;
+
+
+    const [updateCategory, setCategory] = useState(category);
+    const [updateName, setName] = useState(name);
+    const [updateAuthor, setAuthor] = useState(author);
+    const [updateQuantity, setQuantity] = useState(quantity);
+    const [updateRating, setRating] = useState(rating);
+    const [updatePhoto, setPhoto] = useState(image);
+    const [updateDescription, setDescription] = useState(description);
 
     const newBook = {
-        name,
-        author,
-        quantity,
-        rating,
-        image,
-        description,
-        category
+        name:updateName,
+        author:updateAuthor,
+        quantity:updateQuantity,
+        rating:updateRating,
+        image:updatePhoto,
+        description:updateDescription,
+        category:updateCategory
 
     }
-    console.log(newBook)
 
-    const handleAddBook =(e)=>{
+    const handleUpdateBook = (e)=>{
         e.preventDefault()
+        console.log(newBook)
 
-        // adding book to the mongodb
-        axios.post('/add-book', newBook)
+        // updating book 
+        axios.put(`/books/${_id}`, newBook)
         .then(res=>{
             console.log(res.data)
-            if(res.data.insertedId){
-                toast.success('Book added successfully')
+            if(res.data.modifiedCount){
+                toast.success('Book updated Successfully')
             }
         })
-    }
 
+    }
 
     return (
         <div>
-            <Title>Add a new Book</Title>
+            <Title><h2>Book will be updated soon</h2></Title>
+
             <Container>
                 <div className="p-10 border shadow-2xl">
-                    <form onSubmit={handleAddBook}>
+                    <form onSubmit={handleUpdateBook}>
                         {/* Raw-1 */}
                         <div className="flex w-full gap-4 mb-4">
                             <div className="form-control flex-1">
@@ -57,9 +63,10 @@ const AddBook = () => {
                                 <input
                                     type="text"
                                     name="name"
+                                    defaultValue={name}
                                     placeholder="Please Enter Book Name"
                                     className="input input-bordered"
-                                    onBlur={(e)=> setName(e.target.value)}
+                                    onBlur={(e) => setName(e.target.value)}
                                     required />
                             </div>
                             <div className="form-control flex-1">
@@ -69,9 +76,10 @@ const AddBook = () => {
                                 <input
                                     type="text"
                                     name="AuthorName"
+                                    defaultValue={author}
                                     placeholder="Please Enter Author Name"
                                     className="input input-bordered"
-                                    onBlur={(e)=> setAuthor(e.target.value)}
+                                    onBlur={(e) => setAuthor(e.target.value)}
                                     required />
                             </div>
                         </div>
@@ -84,9 +92,10 @@ const AddBook = () => {
                                 <input
                                     type="text"
                                     name="quantity"
+                                    defaultValue={quantity}
                                     placeholder="Please Enter Book Quantity"
                                     className="input input-bordered"
-                                    onBlur={(e)=> setQuantity(e.target.value)}
+                                    onBlur={(e) => setQuantity(e.target.value)}
                                     required />
                             </div>
                             <div className="form-control flex-1">
@@ -113,9 +122,10 @@ const AddBook = () => {
                                 <input
                                     type="text"
                                     name="rating"
+                                    defaultValue={rating}
                                     placeholder="Please Enter Book Rating"
                                     className="input input-bordered"
-                                    onBlur={(e)=> setRating(e.target.value)}
+                                    onBlur={(e) => setRating(e.target.value)}
                                     required />
                             </div>
                             <div className="form-control flex-1">
@@ -125,9 +135,10 @@ const AddBook = () => {
                                 <input
                                     type="text"
                                     name="image"
-                                    placeholder="Please Enter Photo Url"
+                                    defaultValue={image}
+                                    placeholder="Please Enter Author Name"
                                     className="input input-bordered"
-                                    onBlur={(e)=> setPhoto(e.target.value)}
+                                    onBlur={(e) => setPhoto(e.target.value)}
                                     required />
                             </div>
                         </div>
@@ -137,9 +148,10 @@ const AddBook = () => {
                             </label>
                             <textarea
                                 name="description"
+                                defaultValue={description}
                                 className="textarea textarea-bordered h-24"
                                 placeholder="Please Enter Description"
-                                onBlur={(e)=> setDescription(e.target.value)}
+                                onBlur={(e) => setDescription(e.target.value)}
                             ></textarea>
                         </div>
                         <button
@@ -154,4 +166,4 @@ const AddBook = () => {
     );
 };
 
-export default AddBook;
+export default UpdateBook;
