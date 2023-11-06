@@ -1,5 +1,6 @@
 
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const BookCategoryCard = ({ category }) => {
     return (
@@ -8,9 +9,11 @@ const BookCategoryCard = ({ category }) => {
             <div className="card-body">
                 <div className="card-actions flex justify-between items-center ">
                     <h2 className="card-title">{category.category}</h2>
-                    <button
-                        className="btn btn-md bg-[#2eca7f] hover:bg-[#6610f2] text-white"
-                    >See Books</button>
+                    <Link to={`/book-page/${category.category}`}>
+                        <button
+                            className="btn btn-md bg-[#2eca7f] hover:bg-[#6610f2] text-white"
+                        >See Books</button>
+                    </Link>
                 </div>
             </div>
         </div>
