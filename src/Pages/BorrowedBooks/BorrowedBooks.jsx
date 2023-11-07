@@ -10,7 +10,7 @@ const BorrowedBooks = () => {
     const { user } = useAuth()
     const axios = useAxios()
 
-    const { data: borrowedBooks, isPending, error } = useQuery({
+    const { data: borrowedBooks, isPending, error,refetch } = useQuery({
         queryKey: ['borrowed-book'],
         queryFn: () =>
             axios.get(`user/borrowed-book?email=${user.email}`)
@@ -58,7 +58,8 @@ const BorrowedBooks = () => {
                             {
                                 borrowedBooks.map(book => <BorrowedBookCard
                                     key={book._id}
-                                    book={book}>
+                                    book={book}
+                                    refetch={refetch}>
 
                                 </BorrowedBookCard>)
                             }

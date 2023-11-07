@@ -38,6 +38,11 @@ const AddBook = () => {
             if(res.data.insertedId){
                 toast.success('Book added successfully')
             }
+            
+        })
+        .catch(error =>{
+            console.log(error)
+            toast.error('You cant do this action')
         })
     }
 

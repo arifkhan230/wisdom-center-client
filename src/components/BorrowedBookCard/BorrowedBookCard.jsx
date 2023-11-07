@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import useAxios from '../../Hooks/useAxios';
 import toast from 'react-hot-toast';
 
-const BorrowedBookCard = ({ book }) => {
+const BorrowedBookCard = ({ book,refetch }) => {
     const axios = useAxios()
     const {_id,category,image,name,borrowedDate,returnDate,quantity} = book;
     
@@ -17,6 +17,7 @@ const BorrowedBookCard = ({ book }) => {
             console.log(res.data)
             if(res.data.deletedCount){
                 toast.success('Deleted successfully')
+                refetch()
                 axios.patch(`/book/${_id}`, updateQuantity)
                 .then(res=>{
                     console.log(res.data)
@@ -60,7 +61,9 @@ const BorrowedBookCard = ({ book }) => {
 };
 
 BorrowedBookCard.propTypes = {
-    book: PropTypes.object
+    book: PropTypes.object,
+    refetch: PropTypes.func
+    
 };
 
 export default BorrowedBookCard;

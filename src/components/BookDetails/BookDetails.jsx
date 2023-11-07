@@ -65,6 +65,7 @@ const BookDetails = () => {
                 axios.patch(`/books/${_id}`, updateQuantity)
                 .then(res=>{
                     console.log(res.data)
+                    window.location.reload()
                 })
             }
         })
