@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const AllBookCard = ({ book }) => {
     const { _id, image, name, author, category, rating } = book;
     return (
-        <div className="card card-compact bg-base-100 shadow-xl">
+        <div className="card card-compact border shadow-xl mx-4 md:mx-0">
             <figure><img className='object-cover h-60 w-full' src={image} alt="Book" /></figure>
             <div className="card-body">
                 <h2 className="card-title text-xl font-semibold">{name}</h2>

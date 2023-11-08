@@ -10,7 +10,7 @@ const UpdateBook = () => {
     const axios = useAxios()
     const book = useLoaderData();
 
-    const { _id, category, image, name, author, quantity, rating, description } = book;
+    const { _id, category, image, name, author, quantity, rating, description,content } = book;
 
 
     const [updateCategory, setCategory] = useState(category);
@@ -20,39 +20,41 @@ const UpdateBook = () => {
     const [updateRating, setRating] = useState(rating);
     const [updatePhoto, setPhoto] = useState(image);
     const [updateDescription, setDescription] = useState(description);
+    const [updateContent, setContent] = useState(content);
 
     const newBook = {
-        name:updateName,
-        author:updateAuthor,
-        quantity:updateQuantity,
-        rating:updateRating,
-        image:updatePhoto,
-        description:updateDescription,
-        category:updateCategory
+        name: updateName,
+        author: updateAuthor,
+        quantity: updateQuantity,
+        rating: updateRating,
+        image: updatePhoto,
+        description: updateDescription,
+        category: updateCategory,
+        content :updateContent
 
     }
 
-    const handleUpdateBook = (e)=>{
+    const handleUpdateBook = (e) => {
         e.preventDefault()
         console.log(newBook)
 
         // updating book 
         axios.put(`/books/${_id}`, newBook)
-        .then(res=>{
-            console.log(res.data)
-            if(res.data.modifiedCount){
-                toast.success('Book updated Successfully')
-            }
-        })
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount) {
+                    toast.success('Book updated Successfully')
+                }
+            })
 
     }
 
     return (
         <div>
-            <Title><h2>Book will be updated soon</h2></Title>
+            <Title><h2>Update</h2></Title>
 
             <Container>
-                <div className="p-10 border shadow-2xl">
+                <div className="p-10 border bg-white shadow-2xl">
                     <form onSubmit={handleUpdateBook}>
                         {/* Raw-1 */}
                         <div className="flex w-full gap-4 mb-4">
@@ -142,22 +144,37 @@ const UpdateBook = () => {
                                     required />
                             </div>
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Add Short Description</span>
-                            </label>
-                            <textarea
-                                name="description"
-                                defaultValue={description}
-                                className="textarea textarea-bordered h-24"
-                                placeholder="Please Enter Description"
-                                onBlur={(e) => setDescription(e.target.value)}
-                            ></textarea>
+                        {/* row-4 */}
+                        <div className="flex gap-4">
+                            <div className="form-control flex-1">
+                                <label className="label">
+                                    <span className="label-text">Add Short Description</span>
+                                </label>
+                                <textarea
+                                    name="description"
+                                    defaultValue={description}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Please Enter Description"
+                                    onBlur={(e) => setDescription(e.target.value)}
+                                ></textarea>
+                            </div>
+                            <div className="form-control flex-1">
+                                <label className="label">
+                                    <span className="label-text">Add Some Content Of Book</span>
+                                </label>
+                                <textarea
+                                    name="content"
+                                    defaultValue={content}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Please Enter Description"
+                                    onBlur={(e) => setContent(e.target.value)}
+                                ></textarea>
+                            </div>
                         </div>
                         <button
                             type="submit"
                             className="btn w-full mt-8 text-white bg-[#2eca7f] hover:bg-[#6610f2]"
-                        >Add Book
+                        >Update Book
                         </button>
                     </form>
                 </div>

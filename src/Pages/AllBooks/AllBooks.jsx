@@ -48,7 +48,7 @@ const AllBooks = () => {
             <Title>All Books will be here</Title>
 
             <Container>
-                <button onClick={handleFilter} className="btn btn-outline my-6">See Available Books</button>
+                <button onClick={handleFilter} className="btn text-white bg-black btn-outline my-6">See Available Books</button>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" >
                     {
                         allBooks.map(book=><AllBookCard 

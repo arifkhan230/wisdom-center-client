@@ -48,7 +48,7 @@ const BookDetails = () => {
         const borrowedBook = {
             category: category,
             image:image,
-            _id:_id,
+            // _id:_id,
             name:name,
             quantity:quantity,
             borrowedDate: new Date().toLocaleDateString(),
@@ -58,15 +58,18 @@ const BookDetails = () => {
         }
         axios.post('/user/borrowed-book', borrowedBook)
         .then(res=>{
-            console.log(res.data)
+            console.log(res?.data)
             let updateQuantity = {quantity: quantity}
-            if(res.data.insertedId){
+            if(res?.data?.insertedId){
                 toast.success('Borrowed Successfully');
                 axios.patch(`/books/${_id}`, updateQuantity)
                 .then(res=>{
                     console.log(res.data)
                     window.location.reload()
                 })
+            }
+            else{
+                toast.error('product already exist')
             }
         })
 
@@ -84,7 +87,7 @@ const BookDetails = () => {
                     <div className="col-span-8 border shadow-2xl">
                         <img className="object-cover h-[600px] w-full rounded-lg" src={image} alt="" />
                     </div>
-                    <div className="w-full col-span-4 border shadow-lg p-6">
+                    <div className="w-full col-span-4 border  shadow-lg p-6">
                         {/* <h2 className="text-3xl font-bold">{name}</h2> */}
                         {/* <p className="text-lg">{description}</p> */}
                         <p className="text-xl font-bold mb-4">Author: {author}</p>
@@ -100,7 +103,7 @@ const BookDetails = () => {
                             initialRating={rating}
                             readonly
                         />
-                        <p className="mt-6"> <span className="text-lg font-bold ">Book Preview</span>: {content}</p>
+                        <p className="mt-6"> <span className="text-lg font-bold ">Book Preview</span>:  {content && content.slice(0,520)}...</p>
 
                         <div className="w-full flex justify-between gap-6 mt-10">
                             <Link to={`/read-book/${_id}`} className="flex-1 w-full">
@@ -111,7 +114,9 @@ const BookDetails = () => {
                             </Link>
                             <button
                                 onClick={handleModal}
-                                className="flex-1 btn text-white bg-[#2eca7f]  hover:bg-[#6610f2]"
+                                className={quantity == 0 ? "btn-disabled flex-1 btn text-white bg-[#2eca7f]  hover:bg-[#6610f2]"
+                                 : 
+                                 "flex-1 btn text-white bg-[#2eca7f]  hover:bg-[#6610f2]"}
                             >Borrow
                             </button>
 

@@ -40,10 +40,10 @@ const BorrowedBooks = () => {
             <Title>User will see his books here</Title>
 
             <Container>
-                <div className="overflow-x-auto">
-                    <table className="table">
+                <div className="overflow-x-auto bg-white">
+                    <table className="table ">
                         {/* head */}
-                        <thead className="bg-gray-200 text-xl ">
+                        <thead className="bg-gray-200 lg:text-xl ">
                             <tr>
                                 <th>Image</th>
                                 <th>Name</th>

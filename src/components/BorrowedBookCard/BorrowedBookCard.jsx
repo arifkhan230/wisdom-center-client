@@ -11,14 +11,14 @@ const BorrowedBookCard = ({ book,refetch }) => {
 
     const handleDelete=()=>{
         console.log('clicked')
-        axios.delete(`/user/borrowed-book/${_id}`)
+        axios.delete(`/user/borrowed-book/${name}`)
         .then(res=>{
             let updateQuantity = {quantity: quantity}
             console.log(res.data)
             if(res.data.deletedCount){
                 toast.success('Deleted successfully')
                 refetch()
-                axios.patch(`/book/${_id}`, updateQuantity)
+                axios.patch(`/book/${name}`, updateQuantity)
                 .then(res=>{
                     console.log(res.data)
                 })

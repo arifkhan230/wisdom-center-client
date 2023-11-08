@@ -15,6 +15,7 @@ const AddBook = () => {
     const [rating, setRating] = useState(1);
     const [image, setPhoto] = useState('');
     const [description, setDescription] = useState('');
+    const [content, setContent] = useState('');
 
     const newBook = {
         name,
@@ -23,27 +24,28 @@ const AddBook = () => {
         rating,
         image,
         description,
-        category
+        category,
+        content
 
     }
     console.log(newBook)
 
-    const handleAddBook =(e)=>{
+    const handleAddBook = (e) => {
         e.preventDefault()
 
         // adding book to the mongodb
         axios.post('/add-book', newBook)
-        .then(res=>{
-            console.log(res.data)
-            if(res.data.insertedId){
-                toast.success('Book added successfully')
-            }
-            
-        })
-        .catch(error =>{
-            console.log(error)
-            toast.error('You cant do this action')
-        })
+            .then(res => {
+                console.log(res.data)
+                if (res.data.insertedId) {
+                    toast.success('Book added successfully')
+                }
+
+            })
+            .catch(error => {
+                console.log(error)
+                toast.error('You cant do this action')
+            })
     }
 
 
@@ -51,7 +53,7 @@ const AddBook = () => {
         <div>
             <Title>Add a new Book</Title>
             <Container>
-                <div className="p-10 border shadow-2xl">
+                <div className="p-10 border bg-white shadow-2xl">
                     <form onSubmit={handleAddBook}>
                         {/* Raw-1 */}
                         <div className="flex w-full gap-4 mb-4">
@@ -64,7 +66,7 @@ const AddBook = () => {
                                     name="name"
                                     placeholder="Please Enter Book Name"
                                     className="input input-bordered"
-                                    onBlur={(e)=> setName(e.target.value)}
+                                    onBlur={(e) => setName(e.target.value)}
                                     required />
                             </div>
                             <div className="form-control flex-1">
@@ -76,7 +78,7 @@ const AddBook = () => {
                                     name="AuthorName"
                                     placeholder="Please Enter Author Name"
                                     className="input input-bordered"
-                                    onBlur={(e)=> setAuthor(e.target.value)}
+                                    onBlur={(e) => setAuthor(e.target.value)}
                                     required />
                             </div>
                         </div>
@@ -91,7 +93,7 @@ const AddBook = () => {
                                     name="quantity"
                                     placeholder="Please Enter Book Quantity"
                                     className="input input-bordered"
-                                    onBlur={(e)=> setQuantity(e.target.value)}
+                                    onBlur={(e) => setQuantity(e.target.value)}
                                     required />
                             </div>
                             <div className="form-control flex-1">
@@ -120,7 +122,7 @@ const AddBook = () => {
                                     name="rating"
                                     placeholder="Please Enter Book Rating"
                                     className="input input-bordered"
-                                    onBlur={(e)=> setRating(e.target.value)}
+                                    onBlur={(e) => setRating(e.target.value)}
                                     required />
                             </div>
                             <div className="form-control flex-1">
@@ -132,20 +134,35 @@ const AddBook = () => {
                                     name="image"
                                     placeholder="Please Enter Photo Url"
                                     className="input input-bordered"
-                                    onBlur={(e)=> setPhoto(e.target.value)}
+                                    onBlur={(e) => setPhoto(e.target.value)}
                                     required />
                             </div>
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Add Short Description</span>
-                            </label>
-                            <textarea
-                                name="description"
-                                className="textarea textarea-bordered h-24"
-                                placeholder="Please Enter Description"
-                                onBlur={(e)=> setDescription(e.target.value)}
-                            ></textarea>
+                        {/* row -4 */}
+                        <div className="flex gap-4">
+                            <div className="form-control flex-1">
+                                <label className="label">
+                                    <span className="label-text">Add Short Description</span>
+                                </label>
+                                <textarea
+                                    name="description"
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Please Enter Description"
+                                    onBlur={(e) => setDescription(e.target.value)}
+                                ></textarea>
+                            </div>
+                            {/* content */}
+                            <div className="form-control flex-1">
+                                <label className="label">
+                                    <span className="label-text">Add Some Content Of Book</span>
+                                </label>
+                                <textarea
+                                    name="content"
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Please Enter Description"
+                                    onBlur={(e) => setContent(e.target.value)}
+                                ></textarea>
+                            </div>
                         </div>
                         <button
                             type="submit"

@@ -7,7 +7,7 @@ const Question = () => {
         <div>
             <Title>FAQ</Title>
             <Container>
-                <div className="flex my-20 gap-6">
+                <div className="flex flex-col md:flex-row my-20 gap-6 mx-4 lg:mx-0">
                     <div className="flex-1">
                         <img className="h-[600px] object-cover rounded-md  w-full" src={"https://i.ibb.co/Mc3rLHn/graphic-question-mark-asking-symbol.jpg"} alt="" />
                     </div>
@@ -63,7 +63,7 @@ const Question = () => {
                                 How can I suggest a book for the library s collection?
                             </div>
                             <div className="collapse-content">
-                                <p className="text-lg">We welcome book suggestions from our patrons. If you'd like to recommend a book for our collection, please fill out our book suggestion form available on our website. Our collection development team will review your suggestion.</p>
+                                <p className="text-lg">We welcome book suggestions from our patrons. If you d like to recommend a book for our collection, please fill out our book suggestion form available on our website. Our collection development team will review your suggestion.</p>
                             </div>
                         </div>
                     </div>
