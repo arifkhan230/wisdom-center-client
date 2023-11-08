@@ -54,10 +54,10 @@ const UpdateBook = () => {
             <Title><h2>Update</h2></Title>
 
             <Container>
-                <div className="p-10 border bg-white shadow-2xl">
+                <div className="p-4 lg:p-10 mx-4 lg:mx-0 border bg-white shadow-2xl">
                     <form onSubmit={handleUpdateBook}>
                         {/* Raw-1 */}
-                        <div className="flex w-full gap-4 mb-4">
+                        <div className="lg:flex w-full gap-4 mb-4">
                             <div className="form-control flex-1">
                                 <label className="label">
                                     <span className="label-text text-lg font-medium">Book Name</span>
@@ -86,7 +86,7 @@ const UpdateBook = () => {
                             </div>
                         </div>
                         {/* Raw-2 */}
-                        <div className="flex w-full gap-4 mb-4">
+                        <div className="lg:flex w-full gap-4 mb-4">
                             <div className="form-control flex-1">
                                 <label className="label">
                                     <span className="label-text text-lg font-medium">Quantity</span>
@@ -116,7 +116,7 @@ const UpdateBook = () => {
                             </div>
                         </div>
                         {/* Raw-3 */}
-                        <div className="flex w-full gap-4 mb-4">
+                        <div className="lg:flex w-full gap-4 mb-4">
                             <div className="form-control flex-1">
                                 <label className="label">
                                     <span className="label-text text-lg font-medium">Rating</span>
@@ -145,7 +145,7 @@ const UpdateBook = () => {
                             </div>
                         </div>
                         {/* row-4 */}
-                        <div className="flex gap-4">
+                        <div className="lg:flex gap-4">
                             <div className="form-control flex-1">
                                 <label className="label">
                                     <span className="label-text">Add Short Description</span>

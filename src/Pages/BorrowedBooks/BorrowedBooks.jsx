@@ -10,7 +10,7 @@ const BorrowedBooks = () => {
     const { user } = useAuth()
     const axios = useAxios()
 
-    const { data: borrowedBooks, isPending, error,refetch } = useQuery({
+    const { data: borrowedBooks, isPending, error, refetch } = useQuery({
         queryKey: ['borrowed-book'],
         queryFn: () =>
             axios.get(`user/borrowed-book?email=${user.email}`)
@@ -37,38 +37,48 @@ const BorrowedBooks = () => {
 
     return (
         <div>
-            <Title>User will see his books here</Title>
+            
 
             <Container>
-                <div className="overflow-x-auto bg-white">
-                    <table className="table ">
-                        {/* head */}
-                        <thead className="bg-gray-200 lg:text-xl ">
-                            <tr>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Category</th>
-                                <th>Borrowed Date</th>
-                                <th>Return Date</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* row 1 */}
-                            {
-                                borrowedBooks.map(book => <BorrowedBookCard
-                                    key={book._id}
-                                    book={book}
-                                    refetch={refetch}>
+                {
+                    borrowedBooks.length ?
+                        <>
+                        <Title>Your Borrowed Books</Title>
+                            <div className="overflow-x-auto bg-white">
+                                <table className="table ">
+                                    {/* head */}
+                                    <thead className="bg-gray-200 lg:text-xl ">
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>Category</th>
+                                            <th>Borrowed Date</th>
+                                            <th>Return Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {/* row 1 */}
+                                        {
+                                            borrowedBooks?.map(book => <BorrowedBookCard
+                                                key={book._id}
+                                                book={book}
+                                                refetch={refetch}>
 
-                                </BorrowedBookCard>)
-                            }
+                                            </BorrowedBookCard>)
+                                        }
 
-                        </tbody>
+                                    </tbody>
 
 
-                    </table>
-                </div>
+                                </table>
+                            </div>
+                        </>
+                        :
+                        <div className="min-h-[40vh] w-full flex justify-center items-center">
+                            <p className="text-5xl font-bold">You Did not add any books yet</p>
+                        </div>
+                }
             </Container>
 
         </div>

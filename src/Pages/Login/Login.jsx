@@ -1,7 +1,7 @@
 import Container from "../../components/Container/Container";
 import Title from "../../components/Title/Title";
 import google from "../../assets/google.png"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 
 const Login = () => {
     const { logInUser, loginWithGoogle } = useAuth();
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
@@ -21,6 +22,7 @@ const Login = () => {
             .then(result => {
                 console.log(result.user)
                 toast.success('Logged in successfully')
+                navigate('/')
             })
             .catch(error=>{
                 console.log(error)
@@ -35,6 +37,7 @@ const Login = () => {
         .then(result=>{
             console.log(result.user)
             toast.success('logged in successfully')
+            navigate('/')
         })
         .catch(error =>{
             console.log(error)

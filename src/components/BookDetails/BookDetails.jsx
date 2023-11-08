@@ -14,30 +14,7 @@ const BookDetails = () => {
 
     const { _id, category, image, name, author, quantity, rating, description, content } = book;
 
-    // const {data: book, isPending,error} = useQuery({
-    //     queryKey:['book'],
-    //     queryFn:()=>
-    //         axios.get(`/books/${_id}`)
-    //         .then(res=>{
-    //             return res.data
-    //         })
-        
-    // })
-
-    // const { _id, category, image, name, author, quantity, rating, description, content } = book;
     
-
-    // if(isPending){
-    //     return <p>Loading...</p>
-    // }
-
-    // if(error){
-    //     return "something went wrong"
-    // }
-
-
-    
-
 
     const handleModal = () => {
         document.getElementById('my_modal_5').showModal()

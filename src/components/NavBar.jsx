@@ -5,6 +5,7 @@ import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { useEffect } from "react";
+import logo from '../assets/wisdom-logo.png'
 
 
 
@@ -67,7 +68,8 @@ const NavBar = () => {
             <Container>
                 <div className="navbar py-4  shadow-xl bg-transparent ">
                     <div className="navbar-start w-full  flex justify-between lg:w-3/4">
-                        <a className="btn btn-ghost normal-case text-xl">Wisdom Center</a>
+                        <img className="w-60 h-16 object-cover" src={logo} alt="" />
+                        {/* <a className="btn btn-ghost normal-case text-xl">Wisdom Center</a> */}
                         <div className="dropdown dropdown-left dropdown-bottom">
 
                             <label tabIndex={0} className="btn btn-ghost lg:hidden">

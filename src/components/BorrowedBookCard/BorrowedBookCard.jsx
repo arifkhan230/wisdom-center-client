@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 const BorrowedBookCard = ({ book,refetch }) => {
     const axios = useAxios()
-    const {_id,category,image,name,borrowedDate,returnDate,quantity} = book;
+    const {category,image,name,borrowedDate,returnDate,quantity} = book;
     
 
 

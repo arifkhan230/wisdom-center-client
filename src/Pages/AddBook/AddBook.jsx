@@ -53,10 +53,10 @@ const AddBook = () => {
         <div>
             <Title>Add a new Book</Title>
             <Container>
-                <div className="p-10 border bg-white shadow-2xl">
+                <div className="p-4 lg:p-10 border bg-white shadow-2xl mx-4">
                     <form onSubmit={handleAddBook}>
                         {/* Raw-1 */}
-                        <div className="flex w-full gap-4 mb-4">
+                        <div className="lg:flex w-full gap-4 mb-4">
                             <div className="form-control flex-1">
                                 <label className="label">
                                     <span className="label-text text-lg font-medium">Book Name</span>
@@ -83,7 +83,7 @@ const AddBook = () => {
                             </div>
                         </div>
                         {/* Raw-2 */}
-                        <div className="flex w-full gap-4 mb-4">
+                        <div className="lg:flex w-full gap-4 mb-4">
                             <div className="form-control flex-1">
                                 <label className="label">
                                     <span className="label-text text-lg font-medium">Quantity</span>
@@ -112,7 +112,7 @@ const AddBook = () => {
                             </div>
                         </div>
                         {/* Raw-3 */}
-                        <div className="flex w-full gap-4 mb-4">
+                        <div className="lg:flex w-full gap-4 mb-4">
                             <div className="form-control flex-1">
                                 <label className="label">
                                     <span className="label-text text-lg font-medium">Rating</span>
@@ -139,7 +139,7 @@ const AddBook = () => {
                             </div>
                         </div>
                         {/* row -4 */}
-                        <div className="flex gap-4">
+                        <div className="lg:flex gap-4">
                             <div className="form-control flex-1">
                                 <label className="label">
                                     <span className="label-text">Add Short Description</span>
