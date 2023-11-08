@@ -4,6 +4,7 @@ import useAxios from "../../Hooks/useAxios";
 import { useParams } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import BookCard from "../../components/BookCard/BookCard";
+import Loading from "../../components/Loading/Loading";
 
 
 const BookPage = () => {
@@ -20,7 +21,7 @@ const BookPage = () => {
     })
 
     if(isPending){
-        return <p>Loading...</p>
+        return <Loading></Loading>
     }
 
     if(error){

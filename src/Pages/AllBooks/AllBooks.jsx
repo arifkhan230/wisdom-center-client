@@ -5,6 +5,7 @@ import useAxios from "../../Hooks/useAxios";
 import Container from "../../components/Container/Container";
 import AllBookCard from "../../components/AllBookCard/AllBookCard";
 import { useState } from "react";
+import Loading from "../../components/Loading/Loading";
 
 
 const AllBooks = () => {
@@ -28,7 +29,7 @@ const AllBooks = () => {
 
 
     if (isPending) {
-        return <p>Loading...</p>
+        return <Loading></Loading>
     }
 
     if (error) {
@@ -45,7 +46,7 @@ const AllBooks = () => {
 
     return (
         <div>
-            <Title>All Books will be here</Title>
+            <Title>All Books Of Library</Title>
 
             <Container>
                 <button onClick={handleFilter} className="btn text-white bg-black btn-outline my-6">See Available Books</button>

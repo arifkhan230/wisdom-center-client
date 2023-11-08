@@ -3,6 +3,7 @@ import Title from "../../../components/Title/Title";
 import BookCategoryCard from "../../../components/BookCategoryCard/BookCategoryCard";
 import Container from "../../../components/Container/Container";
 import useCategory from "../../../Hooks/useCategory";
+import Loading from "../../../components/Loading/Loading";
 
 
 const BookCategory = () => {
@@ -10,7 +11,7 @@ const BookCategory = () => {
     console.log(categories)
 
     if (isPending) {
-        return <p>Loading...</p>
+        return <Loading></Loading>
     }
     if (error) {
         return 'Something went wrong'

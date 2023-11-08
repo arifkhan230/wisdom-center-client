@@ -4,6 +4,7 @@ import useAxios from "../../Hooks/useAxios";
 import Title from "../../components/Title/Title";
 import BorrowedBookCard from "../../components/BorrowedBookCard/BorrowedBookcard";
 import Container from "../../components/Container/Container";
+import Loading from "../../components/Loading/Loading";
 
 
 const BorrowedBooks = () => {
@@ -26,7 +27,7 @@ const BorrowedBooks = () => {
 
 
     if (isPending) {
-        return <p>Loading...</p>
+        return <Loading></Loading>
     }
 
     if (error) {
