@@ -9,7 +9,7 @@ const BookCard = ({ book }) => {
 
 
     return (
-        <div className="card card-compact bg-base-100 border mx-4 p-4 shadow-xl">
+        <div className="card card-compact bg-base-100 border px-4 md:px-0 p-4 lg:p-0 shadow-xl">
             <figure><img className='h-60 w-full' src={image} alt="Book" /></figure>
             <div className="card-body">
                 <h2 className="card-title text-xl font-semibold">{name}</h2>

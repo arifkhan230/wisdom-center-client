@@ -7,7 +7,7 @@ const Question = () => {
         <div>
             <Title>FAQ</Title>
             <Container>
-                <div className="flex flex-col md:flex-row my-20 gap-6 mx-4 lg:mx-0">
+                <div className="flex flex-col md:flex-row my-20 gap-6 px-4 lg:px-0">
                     <div className="flex-1">
                         <img className="h-[600px] object-cover rounded-md  w-full" src={"https://i.ibb.co/Mc3rLHn/graphic-question-mark-asking-symbol.jpg"} alt="" />
                     </div>

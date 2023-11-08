@@ -9,7 +9,7 @@ const NewsLetter = () => {
     }
 
     return (
-        <div className="mb-12 mx-4 md:mx-0">
+        <div className="mb-12 px-4 md:px-0">
             <Container>
                 <div className="bg-blue-300 min-h-[40vh] flex items-center justify-center w-full ">
                     <div className="text-center space-y-2 w-full">

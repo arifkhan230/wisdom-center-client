@@ -5,7 +5,7 @@ const Banner = () => {
     return (
         <div>
             <Container> 
-                <div className="hero object-cover mx-4 md:mx-0 h-[600px]" style={{ backgroundImage: 'url(https://i.ibb.co/wd8nfk3/cafe-frankfurt-germany.jpg)' }}>
+                <div className="hero object-cover px-4 md:px-0 h-[600px]" style={{ backgroundImage: 'url(https://i.ibb.co/wd8nfk3/cafe-frankfurt-germany.jpg)' }}>
                     
                     <div className="hero-overlay bg-opacity-70"></div>
                     <div className="hero-content text-center text-white">

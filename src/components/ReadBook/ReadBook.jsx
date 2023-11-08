@@ -11,7 +11,7 @@ const ReadBook = () => {
         <div>
             <Container>
             <Title><h2>Read from: {name}</h2></Title>
-            <p className="text-2xl">Read: {content}</p>
+            <p className="text-2xl px-6">Read: {content}</p>
             </Container>
         </div>
     );
