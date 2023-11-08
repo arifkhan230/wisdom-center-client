@@ -60,11 +60,11 @@ const BookDetails = () => {
                     <h2 className="text-4xl font-bold text-center">{name}</h2>
                     <p className="text-lg font-semibold mt-4">{description}</p>
                 </div>
-                <div className="max-h-[800px] min-w-full grid grid-cols-12 gap-6">
-                    <div className="col-span-8 border shadow-2xl">
+                <div className="max-h-[800px] min-w-full grid md:grid-cols-2  grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div className="md:grid-cols-1 lg:col-span-2 border shadow-2xl">
                         <img className="object-cover h-[600px] w-full rounded-lg" src={image} alt="" />
                     </div>
-                    <div className="w-full col-span-4 border  shadow-lg p-6">
+                    <div className="w-full lg:col-span-1 md:grid-cols-1 border  shadow-lg p-6">
                         {/* <h2 className="text-3xl font-bold">{name}</h2> */}
                         {/* <p className="text-lg">{description}</p> */}
                         <p className="text-xl font-bold mb-4">Author: {author}</p>

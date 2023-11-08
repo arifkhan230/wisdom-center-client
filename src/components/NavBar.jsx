@@ -77,14 +77,11 @@ const NavBar = () => {
                             </label>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 
-
-
-
                                 {
-                                    <img className="w-10 rounded-full" src={user?.photoURL ? user.photoURL : userLogo} />
+                                   user?.email && <img className="w-10 rounded-full" src={user?.photoURL ? user.photoURL : userLogo} />
                                 }
                                 {
-                                    <a className="justify-between text-xl font-bold mb-2">
+                                   user && <a className="justify-between text-xl font-bold mb-2">
                                         {
                                             user?.displayName ? user.displayName : "username"
                                         }
@@ -94,7 +91,14 @@ const NavBar = () => {
                                     navLink
                                 }
                                 {
-                                    <button onClick={handleLogOut} className="btn btn-sm text-white bg-[#2eca7f] mb-2 hover:bg-[#6610f2]">Logout</button>
+                                   user?.email ? <button onClick={handleLogOut} className="btn btn-sm text-white bg-[#2eca7f] mb-2 hover:bg-[#6610f2]">Logout</button>
+                                   : 
+                                   <Link
+                                    to='/login'>
+                                    <button
+                                        className="btn text-white rounded-full px-6 bg-[#2eca7f] hover:bg-[#6610f2] duration-500"
+                                    >Login</button>
+                                </Link>
                                 }
 
 

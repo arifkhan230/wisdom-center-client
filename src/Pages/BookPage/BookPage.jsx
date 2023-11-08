@@ -31,7 +31,7 @@ const BookPage = () => {
     console.log(books)
     return (
         <div>
-            <Title>Book will be here</Title>
+            <Title>Book by Category</Title>
             <Container>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {
