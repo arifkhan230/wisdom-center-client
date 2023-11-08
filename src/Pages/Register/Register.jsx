@@ -43,7 +43,14 @@ const Register = () => {
                 displayName: name,
                 photoURL: photoUrl,
             })
-            window.location.reload()
+            .then(() => {
+                console.log('profile updated')
+                window.location.reload()
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
         })
         .catch(error=>{
             console.log(error.message)
