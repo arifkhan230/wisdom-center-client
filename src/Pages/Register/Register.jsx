@@ -43,6 +43,7 @@ const Register = () => {
                 displayName: name,
                 photoURL: photoUrl,
             })
+            window.location.reload()
         })
         .catch(error=>{
             console.log(error.message)

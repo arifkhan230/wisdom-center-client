@@ -11,7 +11,7 @@ const firebaseConfig = {
   projectId: "wisdom-center-407db",
   storageBucket: "wisdom-center-407db.appspot.com",
   messagingSenderId: "947350788474",
-  appId: "1:947350788474:web:d343ebf9e01fa0748bdec3"
+  appId: "1:947350788474:web:d343ebf9e01fa0748bdec3",
 };
 
 // Initialize Firebase

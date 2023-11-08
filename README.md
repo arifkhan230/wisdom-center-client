@@ -1,8 +1,20 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Wisdom center
 
-Currently, two official plugins are available:
+Wellcome to Wisdom Center. We are managing our library for helping people who wants to know by reading book. Currently we have four types of book like , Religion, history, cooking, business. Feel free to visit Our library. You can borrow book for a specific time. Iam mentioned our library website below. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Features
+
+- Responsive Layout
+- Private Routes
+- Dark light toggle
+- Secure Api
+- Dynamic Book page
+- Dynamic details page
+- Add Book page
+
+Website here
+
+https://wisdom-center-407db.firebaseapp.com
+

@@ -46,7 +46,7 @@ const BookDetails = () => {
                 })
             }
             else{
-                toast.error('product already exist')
+                toast.error('Book already exist')
             }
         })
 
