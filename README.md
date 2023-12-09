@@ -14,7 +14,12 @@ Wellcome to Wisdom Center. We are managing our library for helping people who wa
 - Dynamic details page
 - Add Book page
 
-Website here
+## Technology used
+#### Front-end: HTML, CSS,Tailwind, JavaScript React,
+#### Back-End: Express.js Node.js MongoDB,
+
+
+#### Website here
 
 https://wisdom-center-407db.firebaseapp.com
 
