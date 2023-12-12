@@ -52,17 +52,17 @@ const router = createBrowserRouter([
             {
                 path:'/book-details/:id',
                 element:<PrivateRoute><BookDetails></BookDetails></PrivateRoute>,
-                loader: ({params})=> fetch(`https://wisdom-center-server.vercel.app/books/${params.id}`)
+                loader: ({params})=> fetch(`http://localhost:5000/books/${params.id}`)
             },
             {
                 path:'/read-book/:id',
                 element:<ReadBook></ReadBook>,
-                loader: ({params})=> fetch(`https://wisdom-center-server.vercel.app/books/${params.id}`)
+                loader: ({params})=> fetch(`http://localhost:5000/books/${params.id}`)
             },
             {
                 path:'/all-books/update-book/:id',
                 element:<PrivateRoute><UpdateBook></UpdateBook></PrivateRoute>,
-                loader: ({params})=> fetch(`https://wisdom-center-server.vercel.app/books/${params.id}`)
+                loader: ({params})=> fetch(`http://localhost:5000/books/${params.id}`)
             }
             
             
