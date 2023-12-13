@@ -3,10 +3,16 @@ import Container from "../../components/Container/Container";
 import Title from "../../components/Title/Title";
 import useAxios from "../../Hooks/useAxios";
 import toast from "react-hot-toast";
+// import useAdmin from "../../Hooks/useAdmin";
+// import { useNavigate } from "react-router-dom";
 
 
 const AddBook = () => {
     const axios = useAxios();
+    // const [isAdmin] = useAdmin();
+    // const navigate = useNavigate();
+
+    // console.log(isAdmin);
 
     const [category, setCategory] = useState("");
     const [name, setName] = useState('');
@@ -32,6 +38,8 @@ const AddBook = () => {
 
     const handleAddBook = (e) => {
         e.preventDefault()
+
+       e.target.reset()
 
         // adding book to the mongodb
         axios.post('/add-book', newBook)

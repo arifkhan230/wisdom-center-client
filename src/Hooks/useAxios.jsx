@@ -7,7 +7,7 @@ import useAuth from "./useAuth";
 // import { useNavigate } from "react-router-dom";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://wisdom-center-server.vercel.app',
     withCredentials: true
 })
 

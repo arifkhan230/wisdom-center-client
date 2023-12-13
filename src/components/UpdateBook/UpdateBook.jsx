@@ -1,14 +1,16 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Title from "../Title/Title";
 import Container from "../Container/Container";
 import { useState } from "react";
 import useAxios from "../../Hooks/useAxios";
 import toast from "react-hot-toast";
+import useAdmin from "../../Hooks/useAdmin";
 
 
 const UpdateBook = () => {
     const axios = useAxios()
     const book = useLoaderData();
+    const [isAdmin] = useAdmin();
 
     const { _id, category, image, name, author, quantity, rating, description,content } = book;
 
@@ -36,7 +38,12 @@ const UpdateBook = () => {
 
     const handleUpdateBook = (e) => {
         e.preventDefault()
-        console.log(newBook)
+        // console.log(newBook)
+
+        if(!isAdmin){
+            toast.error("Only Librarian Can Update Book")
+            return 
+        }
 
         // updating book 
         axios.put(`/books/${_id}`, newBook)

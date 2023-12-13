@@ -6,11 +6,13 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import { useEffect } from "react";
 import logo from '../assets/wisdom-logo.png'
+import useAdmin from "../Hooks/useAdmin";
 
 
 
 const NavBar = () => {
     const { logOutUser, user } = useAuth()
+    const [isAdmin] = useAdmin()
 
     // Dark light toggle
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light")
@@ -32,7 +34,48 @@ const NavBar = () => {
     }, [theme])
 
     const navLink = <>
-        <NavLink to="/" className={({ isActive, isPending }) =>
+        {
+            isAdmin ? <>
+                <NavLink to="/" className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-lg text-orange-400 font-bold mr-4" : "text-xl font-semibold mr-4"
+                }
+                > Home</NavLink>
+                <NavLink to="/add-book" className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-lg text-orange-400 font-bold mr-4" : "text-lg font-semibold mr-4"
+                }
+                > Add Book</NavLink>
+                <NavLink to="/all-books" className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-lg text-orange-400 font-bold mr-4" : "text-lg font-semibold mr-4"
+                }
+                > All Books</NavLink>
+                <NavLink to="/borrowed-books" className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-lg text-orange-400 font-bold mr-4" : "text-lg font-semibold mr-4"
+                }
+                > Borrowed Books</NavLink>
+            </>
+                :
+                <>
+                    <NavLink to="/" className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "text-lg text-orange-400 font-bold mr-4" : "text-xl font-semibold mr-4"
+                    }
+                    > Home</NavLink>
+                    {/* <NavLink to="/add-book" className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "text-lg text-orange-400 font-bold mr-4" : "text-lg font-semibold mr-4"
+                    }
+                    > Add Book</NavLink> */}
+                    <NavLink to="/all-books" className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "text-lg text-orange-400 font-bold mr-4" : "text-lg font-semibold mr-4"
+                    }
+                    > All Books</NavLink>
+                    <NavLink to="/borrowed-books" className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "text-lg text-orange-400 font-bold mr-4" : "text-lg font-semibold mr-4"
+                    }
+                    > Borrowed Books</NavLink>
+                </>
+
+
+        }
+        {/* <NavLink to="/" className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-lg text-orange-400 font-bold mr-4" : "text-xl font-semibold mr-4"
         }
         > Home</NavLink>
@@ -47,7 +90,7 @@ const NavBar = () => {
         <NavLink to="/borrowed-books" className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-lg text-orange-400 font-bold mr-4" : "text-lg font-semibold mr-4"
         }
-        > Borrowed Books</NavLink>
+        > Borrowed Books</NavLink> */}
 
     </>
 
@@ -78,10 +121,10 @@ const NavBar = () => {
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 
                                 {
-                                   user?.email && <img className="w-10 rounded-full" src={user?.photoURL ? user.photoURL : userLogo} />
+                                    user?.email && <img className="w-10 rounded-full" src={user?.photoURL ? user.photoURL : userLogo} />
                                 }
                                 {
-                                   user && <a className="justify-between text-xl font-bold mb-2">
+                                    user && <a className="justify-between text-xl font-bold mb-2">
                                         {
                                             user?.displayName ? user.displayName : "username"
                                         }
@@ -91,14 +134,14 @@ const NavBar = () => {
                                     navLink
                                 }
                                 {
-                                   user?.email ? <button onClick={handleLogOut} className="btn btn-sm text-white bg-[#2eca7f] mb-2 hover:bg-[#6610f2]">Logout</button>
-                                   : 
-                                   <Link
-                                    to='/login'>
-                                    <button
-                                        className="btn text-white rounded-full px-6 bg-[#2eca7f] hover:bg-[#6610f2] duration-500"
-                                    >Login</button>
-                                </Link>
+                                    user?.email ? <button onClick={handleLogOut} className="btn btn-sm text-white bg-[#2eca7f] mb-2 hover:bg-[#6610f2]">Logout</button>
+                                        :
+                                        <Link
+                                            to='/login'>
+                                            <button
+                                                className="btn text-white rounded-full px-6 bg-[#2eca7f] hover:bg-[#6610f2] duration-500"
+                                            >Login</button>
+                                        </Link>
                                 }
 
 

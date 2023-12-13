@@ -14,8 +14,8 @@ const Location = () => {
                 <Map
                     mapLib={import('mapbox-gl')}
                     initialViewState={{
-                        longitude: -100,
-                        latitude: 40,
+                        longitude: 90.356331,
+                        latitude: 23.684994,
                         zoom: 3.5
                     }}
                     style={{ width: 1440, height: 500, overflow:'hidden' }}
@@ -23,7 +23,7 @@ const Location = () => {
                     mapStyle="mapbox://styles/mapbox/streets-v9"
 
                 >
-                    <Marker longitude={-100} latitude={40} anchor="bottom" >
+                    <Marker longitude={90.356331} latitude={23.684994} anchor="bottom" >
                         <FaLocationArrow></FaLocationArrow>
                     </Marker>
                 </Map>

@@ -1,14 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Title from "../../components/Title/Title";
 import Container from "../../components/Container/Container";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
+import useAxios from "../../Hooks/useAxios";
 
 
 const Register = () => {
-    const {createUser} = useAuth()
+    const {createUser} = useAuth();
+    const axios = useAxios();
+    const navigate = useNavigate()
 
     const [name,setName ] = useState('');
     const [email,setEmail ] = useState('');
@@ -44,12 +47,26 @@ const Register = () => {
                 photoURL: photoUrl,
             })
             .then(() => {
-                console.log('profile updated')
-                window.location.reload()
+                const userInfo = {
+                    email: result.user.email,
+                    name: result.user.displayName,
+                    role: "user"
+                }
+                axios.post('/users', userInfo)
+                .then(res => {
+                    console.log(res.data)
+                    toast.success('successfully registered')
+                    window.location.reload()
+                    
+                })
+                navigate('/')
+
+                
 
             })
             .catch(error => {
                 console.log(error)
+                toast.error(error.message)
             })
         })
         .catch(error=>{

@@ -5,11 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import useAxios from "../../Hooks/useAxios";
 
 
 const Login = () => {
     const { logInUser, loginWithGoogle } = useAuth();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const axios  = useAxios()
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
@@ -35,9 +37,22 @@ const Login = () => {
     const handleGoogle=()=>{
         loginWithGoogle()
         .then(result=>{
-            console.log(result.user)
-            toast.success('logged in successfully')
-            navigate('/')
+
+            const userInfo = {
+                email: result.user.email,
+                name: result.user.displayName,
+                role: "user"
+            }
+            axios.post('/users', userInfo)
+            .then(res => {
+                console.log(res.data)
+                toast.success('logged in successfully')
+                navigate('/')
+            })
+
+
+            
+           
         })
         .catch(error =>{
             console.log(error)
