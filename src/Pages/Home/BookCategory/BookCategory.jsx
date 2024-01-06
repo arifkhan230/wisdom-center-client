@@ -22,7 +22,7 @@ const BookCategory = () => {
         <div>
             <Title><h2>Book Category</h2></Title>
             <Container>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-10">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 my-10">
                     {
                         categories?.map(category => <BookCategoryCard
                             key={category._id}
